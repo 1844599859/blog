@@ -7,7 +7,7 @@
         });
     }
     var sidebaraffix = function(){
-        if($('#sidebar').height()&&xb.site_sh){
+        if($('#sidebar').height()&&ka.site_sh){
             if($('#main').height()>$('#sidebar').height()){
                 var footerHeight = 0;
                 if($('#page-footer').length>0){
@@ -15,7 +15,7 @@
                 }
                 $('#sidebar').affix({
                     offset:{
-                        top:$('#sidebar').offset().top-xb.site_sh,
+                        top:$('#sidebar').offset().top-ka.site_sh,
                         bottom:$('#footer').outerHeight(true)+footerHeight+6
                     }
                 });
@@ -50,7 +50,7 @@
                     um_id:id,
                     um_action:action
                 };
-                $.post(xb.ajax_url,ajax_data,function(data){
+                $.post(ka.ajax_url,ajax_data,function(data){
                     $(rateHolder).html(data);
                 });
                 return false;
@@ -159,7 +159,7 @@
                 title:'打赏作者',
                 resize:false,
                 scrollbar:false,
-                content:'<div class="donate-box"><div class="meta-pay text-center"><strong>扫一扫支付</strong></div><div class="qr-pay text-center"><img class="pay-img" id="alipay_qr" src="'+xb.alipay+'"><img class="pay-img d-none" id="wechat_qr" src="'+xb.wechat+'"></div><div class="choose-pay text-center mt-2"><input id="alipay" type="radio" name="pay-method" checked><label for="alipay" class="pay-button"><img src="'+xb.thome+'/static/images/alipay.png"></label><input id="wechatpay" type="radio" name="pay-method"><label for="wechatpay" class="pay-button"><img src="'+xb.thome+'/static/images/wechat.png"></label></div></div>'
+                content:'<div class="donate-box"><div class="meta-pay text-center"><strong>扫一扫支付</strong></div><div class="qr-pay text-center"><img class="pay-img" id="alipay_qr" src="'+ka.alipay+'"><img class="pay-img d-none" id="wechat_qr" src="'+ka.wechat+'"></div><div class="choose-pay text-center mt-2"><input id="alipay" type="radio" name="pay-method" checked><label for="alipay" class="pay-button"><img src="'+ka.thome+'/static/images/alipay.png"></label><input id="wechatpay" type="radio" name="pay-method"><label for="wechatpay" class="pay-button"><img src="'+ka.thome+'/static/images/wechat.png"></label></div></div>'
             });
             $('.choose-pay input[type="radio"]').click(function(){
                 var id= $(this).attr('id');
@@ -174,7 +174,7 @@
                 logo:'OωO表情',
                 container:document.getElementsByClassName('OwO')[0],
                 target:document.getElementsByClassName('OwO')[0],
-                api:xb.thome+'/inc/OwO.json',
+                api:ka.thome+'/inc/OwO.json',
                 position:'down',
                 width:'90%',
                 maxHeight:'250px'
@@ -289,7 +289,7 @@ jQuery(document).ready(function(jQuery) {
     __list = 'comment-list';
     jQuery(document).on('submit','#commentform',function(){
         jQuery.ajax({
-            url:xb.ajax_url,
+            url:ka.ajax_url,
             data:jQuery(this).serialize()+'&action=ajax_comment',
             type:jQuery(this).attr('method'),
             beforeSend:addComment.createButterbar('正在提交'),
@@ -305,7 +305,7 @@ jQuery(document).ready(function(jQuery) {
                 }else if(!jQuery('.'+__list).length){
                     jQuery('#comments-nav').before('<ol class="'+__list+'">'+data+'</ol>')
                 }else{
-                    if(xb.order=='asc'){
+                    if(ka.order=='asc'){
                         jQuery('.'+__list).append(data)
                     }else{
                         jQuery('.'+__list).prepend(data)
@@ -367,26 +367,30 @@ hljs.initHighlightingOnLoad();
 //time
 var now = new Date();
 function createtime(){
-    var grt = new Date(xb.ctime);
+    var grt = new Date(ka.ctime);
+    var days = (now-grt)/1000/60/60/24;
+    var dnum = Math.floor(days);
     now.setTime(now.getTime()+250);
-    days = (now-grt)/1000/60/60/24;dnum = Math.floor(days);
-    hours = (now-grt)/1000/60/60-(24*dnum);hnum = Math.floor(hours);
+    var hours = (now-grt)/1000/60/60-(24*dnum);
+    var hnum = Math.floor(hours);
     if(String(hnum).length==1){hnum = '0'+hnum;}
-    minutes = (now-grt)/1000/60-(24*60*dnum)-(60*hnum);mnum = Math.floor(minutes);
+    var minutes = (now-grt)/1000/60-(24*60*dnum)-(60*hnum);
+    var mnum = Math.floor(minutes);
     if(String(mnum).length==1){mnum = '0'+mnum;}
-    seconds = (now-grt)/1000-(24*60*60*dnum)-(60*60*hnum)-(60*mnum);snum = Math.round(seconds);
+    var seconds = (now-grt)/1000-(24*60*60*dnum)-(60*60*hnum)-(60*mnum);
+    var snum = Math.round(seconds);
     if(String(snum).length==1){snum = '0'+snum;}
     document.getElementById('span_dt_dt').innerHTML = dnum+'天'+hnum+'小时'+mnum+'分'+snum+'秒';
 }
 setInterval('createtime()',250);
 //copy
-if(xb.copy) document.body.oncopy=function(){alert('已复制所选内容。请务必遵守本站条约！');}
+if(ka.copy) document.body.oncopy=function(){alert('已复制所选内容。请务必遵守本站条约！');}
 //console
 window.onload = function(){
     var now = new Date().getTime();
     var page_load_time = now-performance.timing.navigationStart;
-    console.clear();
+    // console.clear();
     console.log('项目托管:https://github.com/xb2016/kratos-pjax');
-    console.log('%cmoedog.org','font-size:2em');
+    console.log('%chappyfjp.com','font-size:2em');
     console.log('%c页面加载完毕消耗了'+Math.round(performance.now()*100)/100+'ms','background:#fff;color:#333;text-shadow:0 0 2px #eee,0 0 3px #eee,0 0 3px #eee,0 0 2px #eee,0 0 3px #eee;');
 };
