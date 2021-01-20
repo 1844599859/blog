@@ -42,12 +42,12 @@ function ajax(reqUrl,msg,getData){
     $("#container").fadeTo("fast",0.7);
     if(msg=="comtpagenav"){
         $("body,html").animate({
-            scrollTop: $(".comment-list").offset().top - xb.site_sh
+            scrollTop: $(".comment-list").offset().top - ka.site_sh
         },400)
     }else if(msg=="pagelink"||msg=="search"){
         if(reqUrl.indexOf("#")==-1){
             $("body,html").animate({
-                scrollTop: $("#kratos-blog-post").offset().top - document.getElementById("kratos-header-section").offsetHeight
+                scrollTop: $("#cube-blog-post").offset().top - document.getElementById("cube-header-section").offsetHeight
             },400)
         }
     }
@@ -74,7 +74,7 @@ function ajax(reqUrl,msg,getData){
                 var anchor = window.location.hash.substring(location.hash.indexOf("#")+1);
                 if(anchor){
                     $("body,html").animate({
-                        scrollTop: $("#"+anchor).offset().top - xb.site_sh
+                        scrollTop: $("#"+anchor).offset().top - ka.site_sh
                     },600)
                 }
                 try{$("pre>code").each(function(){hljs.highlightBlock(this)})}catch(err){}
