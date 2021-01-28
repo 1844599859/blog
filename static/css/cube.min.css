@@ -428,7 +428,7 @@ textarea{overflow:auto}
 .cube-cover .btn{padding:1em 5em;opacity:.9}
 .cube-cover.cube-cover_2{height:320px}
 .cube-cover .desc{top:50%;position:absolute;width:100%;margin-top:-50px;z-index:2;color:#fff;text-shadow:2px 2px 2px #666}
-.cube-cover .desc h2{color:#fff;text-transform:none;font-size:40px;display:inline-block}
+.cube-cover .desc h1{color:#fff;text-transform:none;font-size:40px;display:inline-block}
 .cube-cover .desc p,.cube-cover .desc span{color:#fff;margin-bottom:30px;font-size:25px;letter-spacing:1px;display:inline-block}
 .cube-cover .desc span a{color:#fff}
 .cube-cover .desc span a:focus,.cube-cover .desc span a:hover{color:#fff!important}
